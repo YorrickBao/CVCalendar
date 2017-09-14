@@ -48,6 +48,8 @@ public protocol CVCalendarViewDelegate {
     @objc optional func didShowNextMonthView(_ date: Foundation.Date)
     @objc optional func didShowPreviousMonthView(_ date: Foundation.Date)
     
+    @objc optional func keepPresentedDate() -> Bool
+    
     // Localization
     @objc optional func calendar() -> Calendar?
     

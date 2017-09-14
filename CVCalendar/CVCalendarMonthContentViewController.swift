@@ -304,6 +304,10 @@ public final class CVCalendarMonthContentViewController: CVCalendarContentViewCo
                     selectDayViewWithDay(presentedDate.day, inMonthView: currentMonthView)
                 }
             }
+        } else {
+            if let currentMonthView = monthViews[presented] {
+                selectDayViewWithDay(presentedDate.day, inMonthView: currentMonthView)
+            }
         }
     }
 
