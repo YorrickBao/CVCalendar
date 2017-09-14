@@ -71,7 +71,7 @@ private extension CVCalendarDayViewControlCoordinator {
 // MARK: - Coordinator's control actions
 
 extension CVCalendarDayViewControlCoordinator {
-    public func performDayViewSingleSelection(_ dayView: DayView) {
+    public func performDayViewSingleSelection(_ dayView: DayView, allowSelectSame: Bool = false) {
         selectionSet.insert(dayView)
         
         if selectionSet.count > 1 {
@@ -88,10 +88,10 @@ extension CVCalendarDayViewControlCoordinator {
         }
         
         if let _ = animator {
-//            if selectedDayView != dayView {
+            if selectedDayView != dayView || allowSelectSame {
                 selectedDayView = dayView
                 presentSelectionOnDayView(dayView)
-//            }
+            }
         }
     }
     

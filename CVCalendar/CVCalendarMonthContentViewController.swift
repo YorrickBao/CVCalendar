@@ -447,7 +447,7 @@ extension CVCalendarMonthContentViewController {
                     }
                 }
 
-                coordinator?.performDayViewSingleSelection(dayView)
+                coordinator?.performDayViewSingleSelection(dayView, allowSelectSame: allowSelectSameDay)
             }
         }
     }
