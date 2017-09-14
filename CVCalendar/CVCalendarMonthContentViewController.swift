@@ -306,7 +306,7 @@ public final class CVCalendarMonthContentViewController: CVCalendarContentViewCo
             }
         } else {
             if let currentMonthView = monthViews[presented] {
-                selectDayViewWithDay(presentedDate.day, inMonthView: currentMonthView)
+                selectDayViewWithDay(presentedDate.day, inMonthView: currentMonthView, allowSelectSameDay: true)
             }
         }
     }
@@ -433,12 +433,18 @@ extension CVCalendarMonthContentViewController {
 
     }
 
-    public func selectDayViewWithDay(_ day: Int, inMonthView monthView: CVCalendarMonthView) {
+    public func selectDayViewWithDay(_ day: Int, inMonthView monthView: CVCalendarMonthView, allowSelectSameDay: Bool = false) {
         let coordinator = calendarView.coordinator
         monthView.mapDayViews { dayView in
             if dayView.date.day == day && !dayView.isOut {
-                if let selected = coordinator?.selectedDayView , selected != dayView {
-                    self.calendarView.didSelectDayView(dayView)
+                if let selected = coordinator?.selectedDayView {
+                    if allowSelectSameDay {
+                        self.calendarView.didSelectDayView(dayView)
+                    } else {
+                        if selected != dayView {
+                            self.calendarView.didSelectDayView(dayView)
+                        }
+                    }
                 }
 
                 coordinator?.performDayViewSingleSelection(dayView)
