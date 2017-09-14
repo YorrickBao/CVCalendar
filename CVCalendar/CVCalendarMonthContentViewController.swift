@@ -94,7 +94,7 @@ public final class CVCalendarMonthContentViewController: CVCalendarContentViewCo
                 pageLoadingEnabled = false
 
                 monthViews[previous]?.removeFromSuperview()
-
+                self.calendarView.delegate?.willShowNextMonthView?(following.date)
                 replaceMonthView(presented, withIdentifier: previous, animatable: false)
                 replaceMonthView(following, withIdentifier: self.presented, animatable: true)
 
@@ -110,6 +110,7 @@ public final class CVCalendarMonthContentViewController: CVCalendarContentViewCo
                 pageLoadingEnabled = false
 
                 monthViews[following]?.removeFromSuperview()
+                self.calendarView.delegate?.willShowPreviousMonthView?(previous.date)
                 replaceMonthView(previous, withIdentifier: self.presented, animatable: true)
                 replaceMonthView(presented, withIdentifier: following, animatable: false)
 
