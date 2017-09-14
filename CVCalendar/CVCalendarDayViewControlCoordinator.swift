@@ -88,10 +88,10 @@ extension CVCalendarDayViewControlCoordinator {
         }
         
         if let _ = animator {
-            if selectedDayView != dayView {
+//            if selectedDayView != dayView {
                 selectedDayView = dayView
                 presentSelectionOnDayView(dayView)
-            }
+//            }
         }
     }
     
